@@ -1,0 +1,6 @@
+![weather app(1)](https://github.com/Sowburnihaa/vervebridge/assets/59436262/1fbb39da-0689-4f6e-8e65-0162ab97b67a)
+![weather search](https://github.com/Sowburnihaa/vervebridge/assets/59436262/984e4399-861e-4e5c-8006-e0dbc59bc8b2)
+![weather search(1)](https://github.com/Sowburnihaa/vervebridge/assets/59436262/7ffa5dcf-23d3-4eb9-879a-7d7f3c991db5)
+![weather search(2)](https://github.com/Sowburnihaa/vervebridge/assets/59436262/231352a2-ce26-4f34-bc20-124aa93107c3)
+![weather invalid inputs](https://github.com/Sowburnihaa/vervebridge/assets/59436262/3171d919-51f5-4deb-a551-556c7bf01b18)
+![weather invalid inputs(1)](https://github.com/Sowburnihaa/vervebridge/assets/59436262/bf988b9b-fa2e-4901-bda2-83b7fde4103c)
