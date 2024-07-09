@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+        <link rel="stylesheet" href="weather.css">
+    </head>
+    <body>
+        <div class="background">
+            <div class="weather-app">
+                <div class="weather">
+                    <div class="search-city">
+                        <input type="text" class="search-box" placeholder="Enter city">
+                        <button ><img src="images/search.png" alt="search"></button>
+                    </div>
+
+
+                    <div class="error">Please enter valid city name</div>
+                    <div class="weather-conditions">
+                        <img src="images/rain.png" alt="rain" class="weather-img">
+                        <h2 class="temperature">22&deg;c</h2>
+                        <h3 class="city">New York</h3>
+                        <div class="other-info">
+                            <div class="cols">
+                                <img src="images/humidity.png" class="humidity" alt="humidity">
+                                <div>
+                                    <h2 class="humid">50%</h2>
+                                    <p>Humidity</p>
+                                </div>
+                            </div>
+                            <div class="cols">
+                                <img src="images/wind.png" class="wind" alt="wind">
+                                <div>
+                                    <h2 class="windspeed">15 km/hr</h2>
+                                    <p>Wind Speed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const apiKey = 'bb3959a0f3bfd65321941ddd7b047596';
+            const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=metric&q=';
+
+            const searchBox = document.querySelector(".search-city input");
+            const searchBtn = document.querySelector(".search-city button");
+            const weatherImg = document.querySelector(".weather-img");
+
+            async function weatherSearch(city) {
+                const result = await fetch(apiUrl + city + `&appid=${apiKey}`);
+
+                if(result.status == 404) {
+                    document.querySelector(".error").style.display = "block";
+                    document.querySelector(".weather-conditions").style.display = "none";
+                }
+                else {
+                    var weatherInfo = await result.json();
+
+    
+                document.querySelector(".city").innerHTML = weatherInfo.name;
+                document.querySelector(".temperature").innerHTML = Math.round(weatherInfo.main.temp) + "&deg;c";
+                document.querySelector(".humid").innerHTML = weatherInfo.main.humidity + "%";
+                document.querySelector(".windspeed").innerHTML = weatherInfo.wind.speed + " km/hr";
+
+
+                if(weatherInfo.weather[0].main == "Clouds") {
+                    weatherImg.src = "images/clouds.png";
+                }
+                else if(weatherInfo.weather[0].main == "Clear"){
+                    weatherImg.src = "images/clear.png";
+                }
+                else if(weatherInfo.weather[0].main == "Rain"){
+                    weatherImg.src = "images/rain.png";
+                }
+                else if(weatherInfo.weather[0].main == "Drizzle"){
+                    weatherImg.src = "images/drizzle.png";
+                }
+                else if(weatherInfo.weather[0].main == "Mist"){
+                    weatherImg.src = "images/mist.png";
+                }
+
+
+                document.querySelector(".weather-conditions").style.display="block";
+                document.querySelector(".error").style.display="none";
+                }
+                
+            }
+
+            searchBtn.addEventListener("click", ()=>{
+                weatherSearch(searchBox.value);
+            })
+
+            
+        </script>
+        
+    </body>
+</html>
